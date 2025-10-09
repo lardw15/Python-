@@ -1,0 +1,32 @@
+# Step 1: Initialize empty lists
+import matplotlib.pyplot as plt
+months = []
+bills = []
+
+# Step 2: Collect data from user
+for i in range(12):
+    month = input(f"Enter month #{i+1} name: ")
+    while True:
+        try:
+            bill = float(input(f"Enter your utility bill for {month}: $"))
+            break
+        except ValueError:
+            print("Please enter a valid number.")
+    months.append(month)
+    bills.append(bill)
+
+# Step 3: Calculate average
+average_bill = sum(bills) / len(bills)
+
+# Step 4: Print average
+print(
+    f"\nYour average utility bill over the past year is: ${average_bill:.2f}")
+
+# Step 5 (Optional): Plot using matplotlib
+
+plt.bar(months, bills, color='skyblue')
+plt.title("Utility Bills Over the Past Year")
+plt.xlabel("Month")
+plt.ylabel("Bill Amount ($)")
+plt.xticks(rotation=45)
+plt.show()
